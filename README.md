@@ -18,9 +18,9 @@ docker-compose up -d
 docker exec -it location sh
 ```
 
-## 直接 su 命令(容器内)
+## 进入容器直接 su 命令
 
-方便补 tab 等命令，不然很难受
+方便补 tab 等命令，不信的话你试试（试试就逝世 ）😄
 
 ```php
 su
