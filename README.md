@@ -50,7 +50,7 @@ npm install
 
 3. 前端请求接口 8000，请修改 web/.env.development 改为 VITE_AXIOS_BASE_URL = 'http://localhost'
 
-# htts 如何配置，查看 nginx.conf 把域名、证书更换，解开注释即可用
+# https 如何配置，查看 nginx.conf 把域名、证书更换，解开注释即可用
 
 ## Docker 注意问题
 
