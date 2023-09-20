@@ -45,33 +45,28 @@ composer install
 npm install
 ```
 
-## 这样就可以访问了 127.0.0.1:8000
+这样就可以访问了 127.0.0.1:8000
 
-# 后台接口默认 8000,如何修改成 80 把 nginx.conf 也下载到项目根目录
+# 后台接口默认 8000,如何修改成 80
 
-## 后台 127.0.0.1/admin 前台 127.0.0.1
+1. 把 nginx.conf 也下载到项目根目录
 
-## Api 端口默认 80 如需修改成项目默认
+2. 把 docker-compose.yml 的 nginx 注释解开端口 8000 修改为 80
 
-nginx.conf 80 端口修改为 8000
+3. 前端请求接口 8000，请修改 web/.env.development 改为 VITE_AXIOS_BASE_URL = 'http://localhost'
 
-## 前端请求接口是 8000，请修改 web/.env.development
+# htts 如何配置，查看 nginx.conf 把域名、证书更换，解开注释即可用
 
-```js
-VITE_AXIOS_BASE_URL = "http://127.0.0.1";
-```
+## Docker 注意问题
 
-## nginx 配置隐藏掉了 index.html 在把 web\src\router\index.ts 修改隐藏掉#号，不然 127.0.0.1/#/admin 看着就烦～ 😄
+1. 如果运行在服务器，需要最低 2G 内存-4G 内存，因为项目加容器就 1G 左右，还要运行其他。
 
-```js
-import { createRouter, createWebHistory } from "vue-router";
-import NProgress from "nprogress";
-import "nprogress/nprogress.css";
-import { staticRoutes } from "/@/router/static";
-import { loading } from "/@/utils/loading";
+2. 正式项目，不推荐用 docker 部署 mysql
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes: staticRoutes,
-});
-```
+## Thinkphp 问题
+
+#### 发现自己写的接口 调试没反应。那就在 接口后面加 server=1
+
+原理 查看 nginx.conf 就看到 server 参数设置
+
+http://127.0.0.1/admin/index/index?server=1
