@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+  nginx:
+    restart: always #docker 启动这个容器也跟着启动
+    image: registry.cn-beijing.aliyuncs.com/lives-ccode/buildadmin:1.0 #容器名字对应版本好
+    container_name: location #容器的名称
+    ports:
+      - 80:80
+      - 443:443
+      - 8000:8000
+      - 1818:1818
+    volumes:
+      -  /$PWD:/var/www/html #项目路径 挂载到 容器路径
+      # -  /$PWD/nginx.conf:/etc/nginx/nginx.conf #nginx配置 挂载到 容器路径
+  # mysql:
+  #   image: mysql:5.7
+  #   restart: always
+  #   container_name: mysql #mysql 容器
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: 123456
+  #   volumes:
+  #     - $PWD/mysql/db/:/var/lib/mysql/
+  #     - $PWD/mysql/mysqld/:/var/run/mysqld/
