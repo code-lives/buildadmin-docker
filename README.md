@@ -1,11 +1,6 @@
 ## 感谢 [BuildAdmin](https://github.com/build-admin/BuildAdmin) 开源项目
 
-## 容器环境环境介绍
-
-php8.2
-node14
-npm@6.14.0
-pnpm@6.32.13
+基于 docker 快速部署环境（php8.2、node14、npm@6.14.0、nnpm@6.32.13）
 
 ## 下载 docker-compose.yml 到项目根目录
 
